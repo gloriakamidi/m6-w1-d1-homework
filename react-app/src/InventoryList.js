@@ -39,7 +39,7 @@ class InventoryList extends Component {
             return <p>Loading...</p>;
          }
             
-    const InventoryList = inventories.map(inventory => {
+    const inventoryList = inventories.map(inventory => {
         return <tr key={inventory._id}>
             <td style={{whiteSpace:'nonwrap'}}>{inventory.prodname}</td>
             <td>{inventory.qty}</td>
@@ -63,22 +63,42 @@ class InventoryList extends Component {
             
         </tr>
         
-    })
+    });
        
-        return(
-            <div>
-                <AppNavbar />
-                <Container fluid>
-                    <div className="float-right">
-                        <Button
-                            color="success"
-                            className="my-4"
-                            tag={Link}
-                            to="/inventories/new"
-                        >Add inventory</Button>
-                    </div>
-                </Container>
-            </div>
-        )
+        return (
+          <div>
+            <AppNavbar />
+            <Container fluid>
+              <div className="float-right">
+                <Button
+                  color="success"
+                  className="my-4"
+                  tag={Link}
+                  to="/inventories/new"
+                >
+                  Add inventory
+                </Button>
+              </div>
+              <h3>Inventory List</h3>
+              <Table className="mt-4">
+                <thead>
+                  <tr>
+                    <th width="20%">Product Name</th>
+                    <th width="15%">Quantity</th>
+                    <th width="15%">Price</th>
+                    <th width="15%">Status</th>
+                    <th width="15%">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {inventoryList}
+                </tbody>
+              </Table>
+            </Container>
+          </div>
+        );
     }
+    
 }
+
+export default InventoryList;
