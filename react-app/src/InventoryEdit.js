@@ -68,7 +68,7 @@ class InventoryEdit extends Component {
                   type="text"
                   name="prodname"
                   id="prodname"
-                  value={item.prodname || ""}
+                  value={item.prodname || ''}
                   onChange={this.handleChange}
                   autoComplete="prodname"
                 />
