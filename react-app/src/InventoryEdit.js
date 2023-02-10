@@ -17,9 +17,13 @@ class InventoryEdit extends Component {
         };
     }
     async componentDidMount() {
-        if (this.props.match.params.id !== 'new') {
+      const inventoryId = window.location.href.split( '/' )[ 4 ];
+        // if (this.props.match.params.id !== 'new') {
+          if ( inventoryId !== 'new') {
             const inventory = 
-              await (await fetch(`/api/inventory/${this.props.match.params.id}`)).json();
+              // await (await fetch(`/api/inventory/${this.props.match.params.id}`)).json();
+              await( await fetch (`/api/inventory/${ inventoryId }`)).json();
+              
             this.setState({item: inventory});
         }
     }
@@ -44,7 +48,8 @@ class InventoryEdit extends Component {
         },
         body: JSON.stringify(item),
       });
-      this.props.history.push('/inventories');
+      // this.props.history.push('/inventories');
+      window.location.href = '/inventories';
     }
     render() {
       const {item} = this.state;
